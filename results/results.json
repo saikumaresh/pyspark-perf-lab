@@ -1,0 +1,279 @@
+{
+  "lazy": {
+    "plan_build_s": 0.187,
+    "action": {
+      "label": "lazy-action",
+      "median_s": 1.12,
+      "runs_s": [
+        1.25,
+        1.12,
+        0.83
+      ],
+      "shuffle_write_mb": 0.2,
+      "input_mb": 17.4,
+      "skew": null
+    },
+    "pushed_filter": true
+  },
+  "joins": {
+    "broadcast_hash": {
+      "label": "broadcast_hash",
+      "median_s": 1.33,
+      "runs_s": [
+        1.33,
+        1.39,
+        1.25
+      ],
+      "shuffle_write_mb": 0.0,
+      "input_mb": 5.6,
+      "skew": null,
+      "plan_nodes": [
+        "BroadcastHashJoin"
+      ]
+    },
+    "sort_merge": {
+      "label": "sort_merge",
+      "median_s": 2.8,
+      "runs_s": [
+        2.8,
+        2.98,
+        2.68
+      ],
+      "shuffle_write_mb": 5.2,
+      "input_mb": 5.6,
+      "skew": null,
+      "plan_nodes": [
+        "SortMergeJoin"
+      ]
+    }
+  },
+  "or_join": {
+    "rows": {
+      "events": 1000000,
+      "lookup": 2000
+    },
+    "or_condition": {
+      "label": "or_condition",
+      "median_s": 18.76,
+      "runs_s": [
+        18.01,
+        18.76,
+        19.05
+      ],
+      "shuffle_write_mb": 12.5,
+      "input_mb": 5.5,
+      "skew": null,
+      "plan_nodes": [
+        "BroadcastNestedLoopJoin"
+      ]
+    },
+    "two_equi_joins": {
+      "label": "two_equi_joins",
+      "median_s": 1.72,
+      "runs_s": [
+        1.98,
+        1.58,
+        1.72
+      ],
+      "shuffle_write_mb": 12.5,
+      "input_mb": 5.5,
+      "skew": null,
+      "plan_nodes": [
+        "BroadcastHashJoin"
+      ]
+    },
+    "same_answer": true
+  },
+  "skew": {
+    "aqe_defaults": {
+      "label": "aqe_defaults",
+      "median_s": 4.21,
+      "runs_s": [
+        4.21,
+        3.78,
+        4.29
+      ],
+      "shuffle_write_mb": 70.3,
+      "input_mb": 17.3,
+      "skew": null,
+      "skew_split_applied": false
+    },
+    "aqe_thresholds_lowered": {
+      "label": "aqe_thresholds_lowered",
+      "median_s": 4.14,
+      "runs_s": [
+        4.53,
+        4.0,
+        4.14
+      ],
+      "shuffle_write_mb": 70.3,
+      "input_mb": 17.3,
+      "skew": {
+        "stage": 39,
+        "tasks": 12,
+        "max_ms": 544,
+        "median_ms": 359.0
+      },
+      "skew_split_applied": true
+    }
+  },
+  "udf": {
+    "native": {
+      "label": "native",
+      "median_s": 1.03,
+      "runs_s": [
+        1.59,
+        0.94,
+        1.03
+      ],
+      "shuffle_write_mb": 0.0,
+      "input_mb": 5.4,
+      "skew": null,
+      "plan_nodes": []
+    },
+    "pandas_udf": {
+      "label": "pandas_udf",
+      "median_s": 4.03,
+      "runs_s": [
+        4.04,
+        3.58,
+        4.03
+      ],
+      "shuffle_write_mb": 0.0,
+      "input_mb": 5.4,
+      "skew": null,
+      "plan_nodes": [
+        "ArrowEvalPython"
+      ]
+    },
+    "python_udf": {
+      "label": "python_udf",
+      "median_s": 5.73,
+      "runs_s": [
+        5.73,
+        5.54,
+        6.02
+      ],
+      "shuffle_write_mb": 0.0,
+      "input_mb": 5.4,
+      "skew": null,
+      "plan_nodes": [
+        "BatchEvalPython"
+      ]
+    }
+  },
+  "dedup": {
+    "all_columns": {
+      "label": "all_columns",
+      "median_s": 15.15,
+      "runs_s": [
+        16.85,
+        15.15,
+        14.77
+      ],
+      "shuffle_write_mb": 323.4,
+      "input_mb": 194.7,
+      "skew": {
+        "stage": 22,
+        "tasks": 4,
+        "max_ms": 8218,
+        "median_ms": 4799.0
+      }
+    },
+    "key_only": {
+      "label": "key_only",
+      "median_s": 6.33,
+      "runs_s": [
+        6.54,
+        6.33,
+        6.18
+      ],
+      "shuffle_write_mb": 39.9,
+      "input_mb": 48.8,
+      "skew": {
+        "stage": 50,
+        "tasks": 4,
+        "max_ms": 2603,
+        "median_ms": 1643.0
+      }
+    },
+    "same_count": true
+  },
+  "pruning": {
+    "expression_on_timestamp": {
+      "label": "expression_on_timestamp",
+      "median_s": 1.5,
+      "runs_s": [
+        1.56,
+        1.5,
+        1.34
+      ],
+      "shuffle_write_mb": 0.0,
+      "input_mb": 38.6,
+      "skew": null,
+      "partition_filter_used": false
+    },
+    "partition_column": {
+      "label": "partition_column",
+      "median_s": 0.16,
+      "runs_s": [
+        0.18,
+        0.16,
+        0.16
+      ],
+      "shuffle_write_mb": 0.0,
+      "input_mb": 0.5,
+      "skew": null,
+      "partition_filter_used": true
+    },
+    "same_answer": true,
+    "partitions_total": 31
+  },
+  "config": {
+    "aqe_off_200_partitions": {
+      "label": "aqe_off_200_partitions",
+      "median_s": 16.77,
+      "runs_s": [
+        17.91,
+        16.77,
+        15.52
+      ],
+      "shuffle_write_mb": 107.5,
+      "input_mb": 38.3,
+      "skew": {
+        "stage": 15,
+        "tasks": 200,
+        "max_ms": 67,
+        "median_ms": 11.0
+      }
+    },
+    "aqe_on_default": {
+      "label": "aqe_on_default",
+      "median_s": 6.46,
+      "runs_s": [
+        6.47,
+        6.46,
+        6.05
+      ],
+      "shuffle_write_mb": 90.8,
+      "input_mb": 38.3,
+      "skew": null
+    }
+  },
+  "env": {
+    "spark": "4.0.1",
+    "python": "3.11.15",
+    "master": "local[2]",
+    "driver_memory": "4g",
+    "events": 5000000,
+    "products": 2000,
+    "defaults": {
+      "spark.sql.shuffle.partitions": "200",
+      "spark.sql.adaptive.enabled": "true",
+      "spark.sql.autoBroadcastJoinThreshold": "10485760b",
+      "spark.sql.adaptive.skewJoin.skewedPartitionFactor": "5.0",
+      "spark.sql.adaptive.skewJoin.skewedPartitionThresholdInBytes": "268435456b",
+      "spark.sql.adaptive.advisoryPartitionSizeInBytes": "67108864b"
+    }
+  }
+}

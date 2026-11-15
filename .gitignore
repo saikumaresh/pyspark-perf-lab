@@ -1,0 +1,7 @@
+.venv/
+lab/data/
+lab/spark-warehouse/
+__pycache__/
+.ipynb_checkpoints/
+metastore_db/
+derby.log
