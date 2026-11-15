@@ -2,6 +2,8 @@
 
 Seven small, reproducible experiments that show why most slow PySpark jobs are fixed by changing the query, not the cluster. Companion code for the article *Spark Is "100x Faster." So Why Is Your PySpark Job Still Slow?* by [Sai Kumaresh](https://medium.com/@saikumaresh).
 
+![Slow query shape vs fast query shape, median of 3 runs](docs/img/03-scorecard.gif)
+
 ## What is inside
 
 | Path | What it is |
